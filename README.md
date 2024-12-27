@@ -1,2 +1,2 @@
 # Slide-GoTags
-Code for SlideGoTags
+Code for [SlideGoTags](doi.org/)
