@@ -8,8 +8,8 @@ The processing of sequencing data consists of four major steps:
 4. Processing of nanopore sequencing data from the single cell genotyping library (details included in this repository)
 
 
-#3. Processing of nanopore sequencing data from the single cell T-cell receptor library
+# 3. Processing of nanopore sequencing data from the single cell T-cell receptor library
 
 
 
-#4. Processing of nanopore sequencing data from the single cell genotyping library (details included in this repository)
+# 4. Processing of nanopore sequencing data from the single cell genotyping library (details included in this repository)
