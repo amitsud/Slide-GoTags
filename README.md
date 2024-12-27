@@ -16,7 +16,7 @@ Please see the [Slide-tags github repo](https://github.com/broadchenf/Slide-tags
 Please see [cellranger](https://github.com/10XGenomics/cellranger) for generation of the barcode and feature count matrix for single-nuclei.
 Please see [cellbender](https://github.com/broadinstitute/CellBender) for denosing of the single-nuclei gene expression data.
 
-# 3. Processing of ONT sequencing data from the single-cell T-cell receptor library
+# 3. Processing of ONT sequencing data from the single-cell RNA-Seq T-cell receptor library
 
 This consists of four steps:
 1. Download and install nanoranger and T-cell receptor (TCR) reference library
@@ -24,7 +24,7 @@ This consists of four steps:
 3. UMI correction and quality control of single-nuclei TCR sequencing
 4. Assignment of TCRA and TCRB to single-nuclei
 
-# 4. Processing of nanopore sequencing data from the single-cell genotyping library (details included in this repository)
+# 4. Processing of ONT sequencing data from the single-cell RNA-Seq genotyping library (details included in this repository)
 
 This consists of five steps:
 1. Download and install nanoranger
