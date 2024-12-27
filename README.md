@@ -9,11 +9,11 @@ The processing of sequencing data consists of four major steps:
 
 # 1. Processing of the illunima sequencing data from the spatial library
 
-Please see the [Slide-tags github repo](https://github.com/broadchenf/Slide-tags)
+Please see the [Slide-tags github repo](https://github.com/broadchenf/Slide-tags).
 
 # 2. Processing of the illunima sequencing data from the 10x single-cell RNA-Seq Library to generate gene expression data
 
-Please see [cellranger](https://github.com/10XGenomics/cellranger) and [cellbender](https://github.com/broadinstitute/CellBender)
+Please see [cellranger](https://github.com/10XGenomics/cellranger) and [cellbender](https://github.com/broadinstitute/CellBender).
 
 # 3. Processing of nanopore sequencing data from the single-cell T-cell receptor library
 
