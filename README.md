@@ -7,7 +7,7 @@ The processing of sequencing data consists of four major steps:
 3. Processing of nanopore sequencing data from the single-nuclei T-cell receptor library
 4. Processing of nanopore sequencing data from the single-nuclei genotyping library
 
-# 1. Processing of the illunima sequencing reads from the spatial library
+# 1. Processing of the illumina sequencing reads from the spatial library
 
 Please see the [Slide-tags github repo](https://github.com/broadchenf/Slide-tags) for scripts on how to process the spatial library following illumina sequencing.
 
