@@ -32,3 +32,5 @@ This consists of five steps:
 3. Run nanoranger to align 5' single-nuclei ONT genotyping reads and extract relevant barcode and UMI data.
 4. UMI correction, quality control and matching of genotyping barcode/UMI with gene expresson barcode/UMI.
 5. Denoising and assigment of mutations to single-nuclei.
+
+# Additional code related to analyses in the manucript can be found here:
