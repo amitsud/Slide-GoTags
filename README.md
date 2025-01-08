@@ -14,7 +14,7 @@ Please see the [Slide-tags github repo](https://github.com/broadchenf/Slide-tags
 # 2. Processing of the illumina sequencing reads from the 10x single-nuclei RNA-Seq library to generate gene expression data
 
 Please see [cellranger](https://github.com/10XGenomics/cellranger) for generation of the barcode and feature count matrix for single-nuclei.
-Please see [cellbender](https://github.com/broadinstitute/CellBender) for denosing of the single-nuclei gene expression data.
+Please see [cellbender](https://github.com/broadinstitute/CellBender) for denoising of the single-nuclei gene expression data.
 
 # 3. Processing of ONT sequencing reads from the single-cell RNA-Seq T-cell receptor library
 
