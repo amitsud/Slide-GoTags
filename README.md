@@ -19,7 +19,7 @@ Please see [cellbender](https://github.com/broadinstitute/CellBender) for denois
 # 3. Processing of ONT sequencing reads from the single-cell RNA-Seq T-cell receptor library
 
 This consists of four steps:
-1. Download and install nanoranger and T-cell receptor (TCR) reference library.
+1. Download and install [Nanoranger]((https://github.com/mehdiborji/nanoranger) and the T-cell receptor (TCR) reference library from [VDJ.online] (https://vdj.online/library).
 2. Run nanoranger to align 5' single-nuclei TCR-seq ONT sequencing reads and extract relevant barcode and UMI data.
 3. UMI correction and quality control of single-nuclei TCR sequencing.
 4. Assignment of TCRA and TCRB to single-nuclei.
