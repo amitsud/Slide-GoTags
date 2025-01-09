@@ -20,7 +20,7 @@ Please see [cellbender](https://github.com/broadinstitute/CellBender) for denois
 
 This consists of four steps:
 1. Download and install [nanoranger](https://github.com/mehdiborji/nanoranger) and the T-cell receptor (TCR) reference library from [VDJ.online](https://vdj.online/library).
-2. Run nanoranger to align 5' single-nuclei TCR-seq ONT sequencing reads and extract relevant barcode and UMI data.
+2. Run nanoranger to align 5' single-nuclei TCR-seq ONT sequencing reads and extract relevant barcode and UMI data (for an example script see TCR_nanoranger.sh).
 3. UMI correction and quality control of single-nuclei TCR sequencing.
 4. Assignment of TCRA and TCRB to single-nuclei.
 
@@ -28,7 +28,10 @@ This consists of four steps:
 
 This consists of five steps:
 1. Download and install [nanoranger](https://github.com/mehdiborji/nanoranger).
-2. Generate reference amplicons and mutation annotation files.
+2. Generate reference amplicons sequence and mutation annotation files.
+The reference amplicon sequence consists of the 5' transcript start site to the nested primer PCR sequence. An example is provided
+The reference amplicon sequence consists of the 5' transcript start site to the nested primer PCR sequence. An example is provided
+
 3. Run nanoranger to align 5' single-nuclei ONT genotyping reads and extract relevant barcode and UMI data.
 4. UMI correction, quality control and matching of genotyping barcode/UMI with gene expresson barcode/UMI.
 5. Denoising and assingment of mutations to single-nuclei.
