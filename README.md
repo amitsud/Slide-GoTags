@@ -28,12 +28,7 @@ This consists of four steps:
 
 This consists of five steps:
 1. Download and install [nanoranger](https://github.com/mehdiborji/nanoranger).
-2. Generate reference amplicons sequence and mutation annotation files.
-The reference amplicon sequence consists of the 5' transcript start site to the nested primer PCR sequence. An example is provided
-The reference amplicon sequence consists of the 5' transcript start site to the nested primer PCR sequence. An example is provided
-
+2. Generate reference transcript sequence and mutation annotation files.
 3. Run nanoranger to align 5' single-nuclei ONT genotyping reads and extract relevant barcode and UMI data.
 4. UMI correction, quality control and matching of genotyping barcode/UMI with gene expresson barcode/UMI.
 5. Denoising and assingment of mutations to single-nuclei.
-
-# Additional code related to analyses in the manucript can be found here:
