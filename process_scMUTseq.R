@@ -209,7 +209,7 @@ filtered_founder_results_gene_keep_bc_calls <- filtered_founder_results_gene_kee
 
 
 
-##denoising###
+##denoising part 1###
 #read 10x input
 umi_counts_input_df <- df_10x %>% group_by(BC) %>% summarise(counts = n_distinct(UMI))
 colnames(umi_counts_input_df)[colnames(umi_counts_input_df) == "BC"] <- "barcode"
