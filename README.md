@@ -31,4 +31,4 @@ This consists of five steps:
 2. Generate reference transcript sequence and mutation annotation files.
 3. Run nanoranger to align 5' single-nuclei ONT genotyping reads and extract relevant barcode and UMI data.
 4. UMI correction, quality control and matching of genotyping barcode/UMI with gene expresson barcode/UMI using this [R script](https://github.com/amitsud/Slide-GoTags/blob/main/process_scMUTseq.R).
-5. Denoising and assingment of mutations to single-nuclei - user defined.
+5. Denoising and assignment of mutations to single-nuclei - user defined.
