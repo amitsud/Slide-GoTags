@@ -16,6 +16,7 @@ cellbender_bc <- "<path_to_cellbender_barcodes.tsv>"
 h5file <- "<path_to_molecule_info.h5>"
 gene <- "<target_gene_name>"
 got_df <- vroom("<path_to_pileup_output.tsv>")
+cellbender_filtered_h5 <- "<path_to_cellbender_filtered.h5>"
 
 # ---- Load barcode list from CellBender ----
 seurat_bcs <- scan(file = cellbender_bc, what = "character", quiet = TRUE)
@@ -41,7 +42,7 @@ network_umi_error_correction <- function(bc_data) {
   results <- tibble(bc = character(), founder_umi = character(), REF_count = integer(), ALT_count = integer(), founder_number = integer(), umi = character())
   founder_number <- 0
   if (nrow(bc_data) == 0) return(results)
-
+  
   while (nrow(bc_data) > 0) {
     if (nrow(bc_data) < 2) {
       bc_data$founder_umi <- bc_data$umi
@@ -52,17 +53,17 @@ network_umi_error_correction <- function(bc_data) {
     distances <- stringdist::stringdistmatrix(bc_data$umi, bc_data$umi, method = "lv")
     matches <- distances <= 2
     match_counts <- rowSums(matches) - 1
-
+    
     if (length(match_counts) == 0 || all(is.na(match_counts)) || max(match_counts) == 0) {
       bc_data$founder_umi <- bc_data$umi
       bc_data$founder_number <- NA
       results <- bind_rows(results, bc_data %>% select(-total))
       break
     }
-
+    
     max_matches <- max(match_counts)
     founder_indices <- which(match_counts == max_matches)
-
+    
     for (founder_index in founder_indices) {
       group_indices <- which(matches[founder_index, ])
       results <- bind_rows(results, tibble(
@@ -200,20 +201,59 @@ filtered_founder_results_gene_keep_umi_calls <- filtered_founder_results_gene_ke
 
 filtered_founder_results_gene_keep_bc_calls <- filtered_founder_results_gene_keep_umi_calls %>%
   group_by(bc) %>%
-  summarise(WT.calls = sum(UMI_genotype == "WT"),
-            MUT.calls = sum(UMI_genotype == "MUT")) %>%
-  mutate(Genotype = case_when(
-    MUT.calls > 0 ~ paste0(gene, "_MUT"),
-    WT.calls >= 1 ~ paste0(gene, "_WT"),
-    TRUE ~ "NA"
-  ),
-  bc = paste0(bc, "-1"))
+  summarise(
+    WT.calls = sum(UMI_genotype == "WT"),
+    MUT.calls = sum(UMI_genotype == "MUT")
+  ) %>%
+  mutate(bc = paste0(bc, "-1"))
+
+
+
+##denoising###
+#read 10x input
+umi_counts_input_df <- df_10x %>% group_by(BC) %>% summarise(counts = n_distinct(UMI))
+colnames(umi_counts_input_df)[colnames(umi_counts_input_df) == "BC"] <- "barcode"
+colnames(umi_counts_input_df)[colnames(umi_counts_input_df) == "counts"] <- "umi_count_input"
+all_barcodes <- data.frame(barcode = seurat_bcs)
+umi_counts_input_df <- merge(all_barcodes, umi_counts_input_df, by = "barcode", all.x = TRUE)
+umi_counts_input_df$umi_count_input[is.na(umi_counts_input_df$umi_count_input)] <- 0
+umi_counts_input_df$barcode <- paste(umi_counts_input_df$barcode, "-1", sep="")
+
+# Read cellbender output
+cellbender_output <- H5Fopen(cellbender_filtered_h5)
+barcodes_output <- h5read(cellbender_output, "matrix/barcodes")
+counts_output <- h5read(cellbender_output, "matrix/data")
+indptr_output <- h5read(cellbender_output, "matrix/indptr")
+indices_output <- h5read(cellbender_output, "matrix/indices")
+gene_names_output <- h5read(cellbender_output, "matrix/features/name")
+
+counts_spars_output <- sparseMatrix(i = indices_output + 1, 
+                                    p = indptr_output, 
+                                    x = counts_output, 
+                                    dims = c(length(gene_names_output), length(barcodes_output)))
+
+features_df_output <- data.frame(gene = gene_names_output)
+str(features_df_output)
+
+gene_index_output <- which(features_df_output$gene == gene)
+umi_counts_output <- counts_spars_output[gene_index_output, ]
+umi_counts_output_df <- data.frame(barcode = barcodes_output, umi_count_output = as.vector(umi_counts_output))
+
+H5Fclose(cellbender_output)
+
+# Merge the dataframes by 'barcode' and calculate difference
+umi_counts_merged_df <- merge(umi_counts_input_df, umi_counts_output_df, by = "barcode")
+umi_counts_merged_df$difference <- umi_counts_merged_df$umi_count_output - umi_counts_merged_df$umi_count_input
+
+seurat_bcs <- paste0(seurat_bcs, "-1")
+real_droplets_nanopore_df <- filtered_founder_results_gene_keep_bc_calls %>% filter(bc %in% seurat_bcs)
+
+real_droplets_nanopore_df <- real_droplets_nanopore_df %>% left_join(umi_counts_merged_df, by = c("bc" = "barcode"))
 
 # ---- Save Output ----
 write.table(
-  filtered_founder_results_gene_keep_bc_calls,
+  real_droplets_nanopore_df,
   file = "genotype_bc_calls_output.txt",
   sep = "\t", quote = FALSE, row.names = FALSE, col.names = TRUE
 )
 
-# ---- End of Script ----
