@@ -1,6 +1,6 @@
 # NanoRanger Genotyping UMI Correction and GEX Matching Pipeline
 # Author: Amit Sud
-# Date: 2025-05-01
+# Date: 1st May 2025
 # Description: This script processes mutation-level data from NanoRanger, applies UMI error correction,
 #              and matches results to gene expression UMIs from CellRanger output to assign genotypes.
 
