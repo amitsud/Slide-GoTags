@@ -1,4 +1,3 @@
-# threshold_mutation_analysis.R
 # Author: Amit Sud
 # Date: 1st May 2025
 # Description: Assigns mutated status to single cells based on thresholds, and compares mutation prevalence in tumor vs normal cells.
