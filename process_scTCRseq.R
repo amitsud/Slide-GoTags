@@ -1,4 +1,3 @@
-# TCR UMI Error Correction and Processing Pipeline
 # Author: Amit Sud
 # Date: 1st May 2025
 # Description: This script processes output from NanoRanger scTCR-seq to correct UMI errors,
