@@ -9,7 +9,7 @@ The processing of sequencing data consists of four major steps:
 
 # 1. Processing of the illumina sequencing reads from the spatial library
 
-Please see the [slide-tags github repo](https://github.com/broadchenf/Slide-tags) for scripts on how to process the spatial library after illumina sequencing.
+Please see the [Slide-tags github repo](https://github.com/broadchenf/Slide-tags) for scripts on how to process the spatial library after illumina sequencing.
 
 # 2. Processing of the illumina sequencing reads from the 10x single-nuclei RNA-Seq library to generate gene expression data
 
