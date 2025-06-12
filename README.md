@@ -26,7 +26,7 @@ This consists of four steps:
 
 # 4. Processing of ONT sequencing reads from the single-cell RNA-Seq genotyping library (details included in this repository)
 
-This consists of five steps:
+This consists of four steps:
 1. Download and install [nanoranger](https://github.com/mehdiborji/nanoranger).
 2. Run nanoranger to align 5' single-nuclei ONT genotyping reads and extract relevant barcode and UMI data.
 3. UMI correction, quality control (including denoising steps) and matching of genotyping barcode/UMI with gene expresson barcode/UMI using this [R script](https://github.com/amitsud/Slide-GoTags/blob/main/process_scMUTseq.R).
