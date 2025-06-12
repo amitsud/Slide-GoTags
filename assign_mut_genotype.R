@@ -1,5 +1,4 @@
 # Author: Amit Sud
-# Date: 1st May 2025
 # Description: Assigns mutated status to single cells based on thresholds, and compares mutation prevalence in tumor vs normal cells.
 # Input: 
 #   - obs_data: A dataframe with cell-level metadata (sample_id, *_MUT.calls, *_difference_proportion, etc.)
