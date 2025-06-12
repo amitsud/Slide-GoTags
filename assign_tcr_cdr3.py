@@ -1,5 +1,4 @@
 # Author: Amit Sud  
-# Date: 1st May 2025  
 # Description: This script processes high-confidence TCR clonotype data (TRA and TRB),
 #              filters for quality, reshapes the data to wide format, and merges it with an AnnData object.
 # Input:
