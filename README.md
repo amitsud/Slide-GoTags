@@ -1,5 +1,5 @@
 # Slide-GoTags
-Code for [SlideGoTags](doi.org/)
+Code for [Slide-GoTags](doi.org/)
 
 The processing of sequencing data consists of four major steps:
 1. Processing of the illumina sequencing data from the spatial library
